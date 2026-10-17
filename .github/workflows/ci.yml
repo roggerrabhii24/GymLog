@@ -1,0 +1,43 @@
+
+name: GymLog CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate GymLog
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check required project files
+        run: |
+          test -f index.html
+          test -f styles.css
+          test -f script.js
+          echo "All required project files are present."
+
+      - name: Check HTML file references
+        run: |
+          grep -Fq 'href="styles.css"' index.html
+          grep -Fq 'src="script.js"' index.html
+          echo "HTML stylesheet and JavaScript references are present."
+
+      - name: Check JavaScript syntax
+        run: node --check script.js
+
+      - name: Report success
+        run: echo "GymLog CI checks passed."
