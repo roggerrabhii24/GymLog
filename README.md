@@ -456,99 +456,73 @@ Values containing commas or double-quotes are wrapped in double-quotes and inter
 
 ## 13. Screenshots / Evidence
 
-> **Instructions:** Replace each placeholder below with an actual screenshot. Recommended format: PNG, at least 1200 × 700 px for desktop screenshots.
-
 ---
 
 ### 13.1 GymLog Dashboard
 
-```
-[ (./Evidence/GymLog Dashboard.png) — GymLog Dashboard (http://localhost:8000) ]
-```
+![GymLog Dashboard](./Evidence/GymLog%20Dashboard.png)
 
 ---
 
 ### 13.2 Workout Logger — Adding Exercises
 
-```
-[ (./Evidence/Workout Logger.png) — Workout Logger with exercises in session ]
-```
+![Workout Logger with exercises in session](./Evidence/Workout%20Logger.png)
 
 ---
 
 ### 13.3 Workout History Section
 
-```
-[ (./Evidence/Workout History.png) — Workout History section ]
-```
+![Workout History section](./Evidence/Workout%20History.png)
 
 ---
 
 ### 13.4 Progress Analytics and Volume Chart
 
-```
-[ (./Evidence/Progress Analytics.png) — Progress analytics with volume chart ]
-```
+![Progress analytics with volume chart](./Evidence/Progress%20Analytics.png)
 
 ---
 
 ### 13.5 Personal Bests
 
-```
-[ (./Evidence/Personal Best.png) — Personal bests grid ]
-```
+![Personal bests grid](./Evidence/Personal%20Best.png)
 
 ---
 
 ### 13.6 CSV Export — Success Message
 
-```
-[ (./Evidence/CSV Export.png) — Export CSV success message ]
-```
+![Export CSV success message](./Evidence/CSV%20Export.png)
 
 ---
 
 ### 13.7 Exported CSV File Opened in Spreadsheet
 
-```
-[ (./Evidence/Exported CSV File Opened in Spreadsheet.png)— CSV file open in spreadsheet application ]
-```
+![CSV file open in spreadsheet application](./Evidence/Exported%20CSV%20File%20Opened%20in%20Spreadsheet.png)
 
 ---
 
 ### 13.8 GitHub Repository
 
-```
-[ (./Evidence/Github repository.jpg) — GitHub repository homepage ]
-```
+![GitHub repository homepage](./Evidence/Github%20repository.jpg)
 
 ---
 
 ### 13.9 GitHub Commit History
 
-```
-[ (./Evidence/Github commit History.jpg) — GitHub commit history page ]
-```
+![GitHub commit history page](./Evidence/Github%20commit%20History.jpg)
 
 ---
 
 ### 13.10 GitHub Actions — Successful CI Run
 
+![GitHub Actions successful CI run — step overview](./Evidence/GitHub%20Actions%20%E2%80%94%20Successful%20CI%20Run%201.png)
 
-
-```
-[ (./Evidence/GitHub Actions — Successful CI Run 1.png),(./Evidence/GitHub Actions — Successful CI Run 2.png) — GitHub Actions successful CI run ]
-```
+![GitHub Actions successful CI run — step details](./Evidence/GitHub%20Actions%20%E2%80%94%20Successful%20CI%20Run%202.png)
 
 ---
 
 ### 13.11 node --check Output (Local Terminal)
 
-
-
-```
-[ (./Evidence/node --check Output (Local Terminal).png) — Terminal: node --check output ]
-```
+![Terminal: node --check output](./Evidence/node%20--check%20Output%20(Local%20Terminal).png)
 
 ---
 
