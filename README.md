@@ -460,13 +460,13 @@ Values containing commas or double-quotes are wrapped in double-quotes and inter
 
 ### 13.1 GymLog Dashboard
 
-![GymLog Dashboard](./Evidence/GymLog%20Dashboard.png)
+![GymLog Dashboard](./Evidence/GymLog Dashboard.png)
 
 ---
 
 ### 13.2 Workout Logger — Adding Exercises
 
-![Workout Logger with exercises in session](./Evidence/Workout%20Logger.png)
+![Workout Logger with exercises in session](./Evidence/Workout%20Logger2.png)
 
 ---
 
@@ -484,7 +484,7 @@ Values containing commas or double-quotes are wrapped in double-quotes and inter
 
 ### 13.5 Personal Bests
 
-![Personal bests grid](./Evidence/Personal%20Best.png)
+![Personal bests grid](./Evidence/Personal%20Bests.png)
 
 ---
 
@@ -502,13 +502,13 @@ Values containing commas or double-quotes are wrapped in double-quotes and inter
 
 ### 13.8 GitHub Repository
 
-![GitHub repository homepage](./Evidence/Github%20repository.jpg)
+![GitHub repository homepage](./Evidence/GitHub%20Repository.png)
 
 ---
 
 ### 13.9 GitHub Commit History
 
-![GitHub commit history page](./Evidence/Github%20commit%20History.jpg)
+![GitHub commit history page](./Evidence/GitHub%20Commit%20History.png)
 
 ---
 
