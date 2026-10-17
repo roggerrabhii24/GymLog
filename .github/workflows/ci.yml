@@ -41,3 +41,4 @@ jobs:
 
       - name: Report success
         run: echo "GymLog CI checks passed."
+
