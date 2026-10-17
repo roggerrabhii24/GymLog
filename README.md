@@ -307,7 +307,7 @@ git push origin main
 
 ---
 
-## 10. CI/CD Integration
+## 10. Continuous Integration (CI) with GitHub Actions
 
 Every push to the `main` branch and every pull request targeting `main` automatically triggers the **GymLog CI** pipeline defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
