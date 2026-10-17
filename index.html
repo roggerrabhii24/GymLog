@@ -13,7 +13,7 @@
 
 <body>
     <aside class="sidebar">
-        <a class="brand" href="#" aria-label="GymLog home">
+        <a class="brand" href="#dashboard" aria-label="GymLog home">
             <span class="brand-icon">G</span>
             GymLog<span class="brand-dot">.</span>
         </a>
@@ -21,7 +21,8 @@
         <p class="nav-label">WORKSPACE</p>
         <nav aria-label="Main navigation">
             <a class="nav-item active" href="#dashboard">▦ &nbsp; Dashboard</a>
-            <a class="nav-item" href="#workouts">♧ &nbsp; Workouts</a>
+            <a class="nav-item" href="#logger">♧ &nbsp; Workouts</a>
+            <a class="nav-item" href="#history">◷ &nbsp; History</a>
             <a class="nav-item" href="#progress">↗ &nbsp; Progress</a>
         </nav>
 
@@ -49,8 +50,9 @@
                 <span class="tag">YOUR NEXT LEVEL STARTS HERE</span>
                 <h2>Show up.<br>Put in the work.</h2>
                 <p>Every rep counts. Keep track of your training and build a stronger version of yourself.</p>
-                <a class="primary-button" href="#workouts">Explore workouts <span>↗</span></a>
+                <a class="primary-button" href="#logger">Log a workout <span>↗</span></a>
             </div>
+
             <div class="hero-art" aria-hidden="true">
                 <div class="orbit orbit-one"></div>
                 <div class="orbit orbit-two"></div>
@@ -72,54 +74,94 @@
                 <article class="stat-card">
                     <span class="stat-icon">◷</span>
                     <p class="muted">Workouts completed</p>
-                    <div class="stat-value">0 <span>sessions</span></div>
+                    <div class="stat-value" id="total-workouts">0 <span>sessions</span></div>
                     <p class="stat-foot">Your first session awaits</p>
                 </article>
+
                 <article class="stat-card">
                     <span class="stat-icon">↗</span>
                     <p class="muted">Training volume</p>
-                    <div class="stat-value">0 <span>kg</span></div>
+                    <div class="stat-value" id="total-volume">0 <span>kg</span></div>
                     <p class="stat-foot">Weight × reps × sets</p>
                 </article>
+
                 <article class="stat-card accent-card">
                     <span class="stat-icon">✳</span>
-                    <p class="muted">Weekly consistency</p>
-                    <div class="stat-value">0 <span>days</span></div>
+                    <p class="muted">Training days</p>
+                    <div class="stat-value" id="training-days">0 <span>days</span></div>
                     <p class="stat-foot">One session at a time</p>
                 </article>
             </div>
         </section>
 
-        <section class="section" id="workouts">
+        <section class="section" id="logger">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">PLAN YOUR SESSION</p>
-                    <h2>Workout categories</h2>
+                    <p class="eyebrow">RECORD YOUR TRAINING</p>
+                    <h2>Log a workout</h2>
                 </div>
+                <span class="muted">Every rep counts.</span>
             </div>
 
-            <div class="workout-grid">
-                <article class="workout-card">
-                    <div class="workout-symbol">01</div>
-                    <span class="category">UPPER BODY</span>
-                    <h3>Push Day</h3>
-                    <p>Chest, shoulders and triceps.</p>
-                    <span class="card-arrow">↗</span>
-                </article>
-                <article class="workout-card">
-                    <div class="workout-symbol">02</div>
-                    <span class="category">UPPER BODY</span>
-                    <h3>Pull Day</h3>
-                    <p>Back and biceps.</p>
-                    <span class="card-arrow">↗</span>
-                </article>
-                <article class="workout-card">
-                    <div class="workout-symbol">03</div>
-                    <span class="category">LOWER BODY</span>
-                    <h3>Leg Day</h3>
-                    <p>Quads, hamstrings and glutes.</p>
-                    <span class="card-arrow">↗</span>
-                </article>
+            <div class="logger-panel">
+                <form id="exercise-form">
+                    <div class="form-grid">
+                        <label class="field field-wide">
+                            Exercise name
+                            <input id="exercise-name" type="text" placeholder="e.g. Bench Press" maxlength="60"
+                                required>
+                        </label>
+
+                        <label class="field">
+                            Sets
+                            <input id="sets" type="number" min="1" max="20" value="3" required>
+                        </label>
+
+                        <label class="field">
+                            Reps per set
+                            <input id="reps" type="number" min="1" max="100" value="10" required>
+                        </label>
+
+                        <label class="field">
+                            Weight (kg)
+                            <input id="weight" type="number" min="0" max="1000" step="0.5" value="20" required>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="secondary-button" type="submit">+ Add exercise</button>
+                        <button class="primary-button" id="save-workout" type="button" disabled>
+                            Save workout ↗
+                        </button>
+                    </div>
+
+                    <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="session-preview">
+                    <div class="session-heading">
+                        <h3>Current session</h3>
+                        <span class="muted" id="session-count">0 exercises</span>
+                    </div>
+
+                    <div id="session-exercises">
+                        <p class="empty-state">Your exercises will appear here when you add them.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="history">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR TRAINING JOURNEY</p>
+                    <h2>Workout history</h2>
+                </div>
+                <span class="muted">Saved on this browser</span>
+            </div>
+
+            <div id="workout-history" class="history-list">
+                <p class="empty-state">No workouts saved yet. Complete your first session!</p>
             </div>
         </section>
 
