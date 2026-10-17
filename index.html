@@ -24,6 +24,7 @@
             <a class="nav-item" href="#logger">♧ &nbsp; Workouts</a>
             <a class="nav-item" href="#history">◷ &nbsp; History</a>
             <a class="nav-item" href="#progress">↗ &nbsp; Progress</a>
+            <a class="nav-item" href="#personal-bests">★ &nbsp; Personal bests</a>
         </nav>
 
         <div class="sidebar-bottom">
@@ -52,7 +53,6 @@
                 <p>Every rep counts. Keep track of your training and build a stronger version of yourself.</p>
                 <a class="primary-button" href="#logger">Log a workout <span>↗</span></a>
             </div>
-
             <div class="hero-art" aria-hidden="true">
                 <div class="orbit orbit-one"></div>
                 <div class="orbit orbit-two"></div>
@@ -106,33 +106,27 @@
             <div class="logger-panel">
                 <form id="exercise-form">
                     <div class="form-grid">
-                        <label class="field field-wide">
-                            Exercise name
+                        <label class="field field-wide">Exercise name
                             <input id="exercise-name" type="text" placeholder="e.g. Bench Press" maxlength="60"
                                 required>
                         </label>
 
-                        <label class="field">
-                            Sets
+                        <label class="field">Sets
                             <input id="sets" type="number" min="1" max="20" value="3" required>
                         </label>
 
-                        <label class="field">
-                            Reps per set
+                        <label class="field">Reps per set
                             <input id="reps" type="number" min="1" max="100" value="10" required>
                         </label>
 
-                        <label class="field">
-                            Weight (kg)
+                        <label class="field">Weight (kg)
                             <input id="weight" type="number" min="0" max="1000" step="0.5" value="20" required>
                         </label>
                     </div>
 
                     <div class="form-actions">
                         <button class="secondary-button" type="submit">+ Add exercise</button>
-                        <button class="primary-button" id="save-workout" type="button" disabled>
-                            Save workout ↗
-                        </button>
+                        <button class="primary-button" id="save-workout" type="button" disabled>Save workout ↗</button>
                     </div>
 
                     <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
@@ -143,7 +137,6 @@
                         <h3>Current session</h3>
                         <span class="muted" id="session-count">0 exercises</span>
                     </div>
-
                     <div id="session-exercises">
                         <p class="empty-state">Your exercises will appear here when you add them.</p>
                     </div>
@@ -159,17 +152,73 @@
                 </div>
                 <span class="muted">Saved on this browser</span>
             </div>
-
             <div id="workout-history" class="history-list">
                 <p class="empty-state">No workouts saved yet. Complete your first session!</p>
             </div>
         </section>
 
-        <section class="section progress-panel" id="progress">
+        <section class="section" id="progress">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MEASURE YOUR EFFORT</p>
+                    <h2>Progress analytics</h2>
+                </div>
+                <span class="muted">Based on saved workouts</span>
+            </div>
+
+            <div class="analytics-grid">
+                <article class="analytics-card">
+                    <div class="analytics-card-heading">
+                        <div>
+                            <h3>Training volume</h3>
+                            <p class="muted">Total weight × reps × sets per day</p>
+                        </div>
+                        <span class="analytics-icon">↗</span>
+                    </div>
+                    <div id="volume-chart" class="volume-chart" aria-label="Training volume chart">
+                        <p class="empty-state">Save workouts to see your volume trend.</p>
+                    </div>
+                    <p class="chart-footnote">Showing your latest 7 training days with saved sessions.</p>
+                </article>
+
+                <article class="analytics-card highlight-analytics">
+                    <p class="eyebrow">ALL-TIME TOTAL</p>
+                    <h3>Total recorded volume</h3>
+                    <p class="big-metric"><span id="analytics-total-volume">0</span> <small>kg</small></p>
+                    <div class="metric-divider"></div>
+                    <div class="metric-row">
+                        <span class="muted">Exercises recorded</span>
+                        <strong id="analytics-exercise-count">0</strong>
+                    </div>
+                    <div class="metric-row">
+                        <span class="muted">Average per workout</span>
+                        <strong id="analytics-average-volume">0 kg</strong>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="personal-bests">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR MILESTONES</p>
+                    <h2>Personal bests</h2>
+                </div>
+                <span class="muted">Highest weight logged per exercise</span>
+            </div>
+
+            <div id="personal-best-list" class="personal-best-grid">
+                <p class="empty-state">Your personal bests will appear after you save a workout.</p>
+            </div>
+            <p class="chart-footnote">Personal bests reflect the highest weight you have logged for each exercise, not a
+                verified one-rep maximum.</p>
+        </section>
+
+        <section class="section progress-panel">
             <div>
                 <p class="eyebrow">THE LONG GAME</p>
                 <h2>Progress takes consistency.</h2>
-                <p class="muted">Log your first workout to start building your training history.</p>
+                <p class="muted">Keep showing up. Your history will tell the story.</p>
             </div>
             <div class="progress-mark">01 <span>/ YOUR JOURNEY</span></div>
         </section>
