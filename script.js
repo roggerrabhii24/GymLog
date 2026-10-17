@@ -13,6 +13,8 @@ const sessionContainer = document.querySelector("#session-exercises");
 const sessionCount = document.querySelector("#session-count");
 const formMessage = document.querySelector("#form-message");
 const historyContainer = document.querySelector("#workout-history");
+const exportCSVButton = document.querySelector("#export-csv");
+const exportMessageEl = document.querySelector("#export-message");
 
 const totalWorkoutsElement = document.querySelector("#total-workouts");
 const totalVolumeElement = document.querySelector("#total-volume");
@@ -428,6 +430,148 @@ function refreshDashboard() {
     renderAnalytics(workouts);
 }
 
+// ── Export CSV ────────────────────────────────────────────────
+
+/**
+ * Escapes a single CSV field value per RFC 4180:
+ * - Wraps in double-quotes if the value contains a comma, double-quote, or newline.
+ * - Doubles any embedded double-quote characters.
+ * @param {string|number} value
+ * @returns {string}
+ */
+function csvEscape(value) {
+    const str = String(value === null || value === undefined ? "" : value);
+    if (str.includes(",") || str.includes('"') || str.includes("\n") || str.includes("\r")) {
+        return '"' + str.replace(/"/g, '""') + '"';
+    }
+    return str;
+}
+
+/**
+ * Converts an array of workout objects to a CSV string.
+ * Produces one row per exercise per workout session.
+ * @param {Array} workouts
+ * @returns {string} CSV content with CRLF line endings (RFC 4180).
+ */
+function buildCSV(workouts) {
+    const CRLF = "\r\n";
+    const headers = [
+        "Workout Date",
+        "Workout ID",
+        "Exercise Name",
+        "Sets",
+        "Reps per Set",
+        "Weight (kg)",
+        "Volume (kg)"
+    ];
+
+    const rows = [headers.map(csvEscape).join(",")];
+
+    // Sort chronologically (oldest first) so the CSV reads naturally.
+    const sorted = [...workouts].sort(
+        (a, b) => new Date(a.date) - new Date(b.date)
+    );
+
+    sorted.forEach((workout) => {
+        const workoutDate = getLocalDateKey(workout.date) || formatDate(workout.date);
+        const workoutId = workout.id || "";
+
+        workout.exercises.forEach((exercise) => {
+            const volume = exercise.sets * exercise.reps * exercise.weight;
+            const row = [
+                csvEscape(workoutDate),
+                csvEscape(workoutId),
+                csvEscape(exercise.name),
+                csvEscape(exercise.sets),
+                csvEscape(exercise.reps),
+                csvEscape(exercise.weight),
+                csvEscape(volume)
+            ];
+            rows.push(row.join(","));
+        });
+    });
+
+    return rows.join(CRLF) + CRLF;
+}
+
+/**
+ * Displays a transient status message below the Export CSV button.
+ * Automatically fades out after the given duration.
+ * @param {string} message
+ * @param {'success'|'error'} type
+ * @param {number} [duration=4000] milliseconds before auto-hide
+ */
+function showExportMessage(message, type, duration) {
+    if (duration === undefined) {
+        duration = 4000;
+    }
+
+    exportMessageEl.textContent = message;
+    exportMessageEl.className = "export-message " + type;
+
+    // Trigger the CSS transition on next frame.
+    requestAnimationFrame(() => {
+        exportMessageEl.classList.add("visible");
+    });
+
+    clearTimeout(exportMessageEl._hideTimer);
+    exportMessageEl._hideTimer = setTimeout(() => {
+        exportMessageEl.classList.remove("visible");
+    }, duration);
+}
+
+/**
+ * Reads all saved workouts, builds a CSV, and triggers a browser download.
+ * Handles empty history gracefully without producing an empty file.
+ */
+function exportWorkoutsCSV() {
+    const workouts = loadWorkouts();
+
+    if (workouts.length === 0) {
+        showExportMessage(
+            "No workouts to export yet. Log your first session!",
+            "error"
+        );
+        return;
+    }
+
+    const csvContent = buildCSV(workouts);
+
+    // Build a dated filename: gymlog-workouts-YYYY-MM-DD.csv
+    const today = getLocalDateKey(new Date().toISOString()) || "export";
+    const filename = `gymlog-workouts-${today}.csv`;
+
+    try {
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+
+        anchor.href = url;
+        anchor.download = filename;
+        anchor.style.display = "none";
+        document.body.appendChild(anchor);
+        anchor.click();
+
+        // Clean up the temporary anchor and object URL.
+        setTimeout(() => {
+            document.body.removeChild(anchor);
+            URL.revokeObjectURL(url);
+        }, 1000);
+
+        const exerciseCount = workouts.reduce((n, w) => n + w.exercises.length, 0);
+        showExportMessage(
+            `✓ Exported ${workouts.length} workout${workouts.length === 1 ? "" : "s"} (${exerciseCount} exercises) as ${filename}`,
+            "success"
+        );
+    } catch (error) {
+        console.error("CSV export failed:", error);
+        showExportMessage(
+            "Export failed. Your browser may not support file downloads.",
+            "error"
+        );
+    }
+}
+
 function updateToday() {
     const now = new Date();
 
@@ -506,6 +650,8 @@ saveButton.addEventListener("click", () => {
         `Workout saved with ${savedCount} ${savedCount === 1 ? "exercise" : "exercises"}. Analytics updated!`
     );
 });
+
+exportCSVButton.addEventListener("click", exportWorkoutsCSV);
 
 updateToday();
 renderCurrentSession();

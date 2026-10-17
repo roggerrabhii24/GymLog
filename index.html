@@ -150,8 +150,18 @@
                     <p class="eyebrow">YOUR TRAINING JOURNEY</p>
                     <h2>Workout history</h2>
                 </div>
-                <span class="muted">Saved on this browser</span>
+                <div class="history-actions">
+                    <button
+                        class="secondary-button export-csv-btn"
+                        id="export-csv"
+                        type="button"
+                        aria-label="Export workout history to CSV file"
+                    >
+                        <span class="export-icon" aria-hidden="true">↓</span> Export CSV
+                    </button>
+                </div>
             </div>
+            <p class="export-message" id="export-message" role="status" aria-live="polite"></p>
             <div id="workout-history" class="history-list">
                 <p class="empty-state">No workouts saved yet. Complete your first session!</p>
             </div>

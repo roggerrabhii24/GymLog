@@ -870,6 +870,69 @@ footer span {
     color: var(--green);
 }
 
+/* ── Export CSV ─────────────────────────────────────────────── */
+
+.history-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.export-csv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 15px;
+    font-size: 12px;
+    font-weight: 750;
+    white-space: nowrap;
+    border-color: #3d4a2e;
+    color: var(--green);
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.export-csv-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: #2a3021;
+    box-shadow: 0 0 12px #c5fa5520;
+}
+
+.export-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    font-size: 11px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.export-message {
+    min-height: 18px;
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.export-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.export-message.success {
+    color: var(--green);
+}
+
+.export-message.error {
+    color: #e7a092;
+}
+
 @media (max-width: 1100px) {
     .sidebar {
         width: 190px;
