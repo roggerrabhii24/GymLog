@@ -460,7 +460,7 @@ Values containing commas or double-quotes are wrapped in double-quotes and inter
 
 ### 13.1 GymLog Dashboard
 
-![GymLog Dashboard](./Evidence/GymLog Dashboard.png)
+![GymLog Dashboard](./Evidence/GymLog%20Dashboard.png)
 
 ---
 
