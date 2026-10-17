@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10110f">
+    <meta name="description" content="GymLog — Track your workouts and build consistency.">
+    <title>GymLog — Your Training Space</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <a class="brand" href="#" aria-label="GymLog home">
+            <span class="brand-icon">G</span>
+            GymLog<span class="brand-dot">.</span>
+        </a>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav aria-label="Main navigation">
+            <a class="nav-item active" href="#dashboard">▦ &nbsp; Dashboard</a>
+            <a class="nav-item" href="#workouts">♧ &nbsp; Workouts</a>
+            <a class="nav-item" href="#progress">↗ &nbsp; Progress</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile-avatar">A</div>
+            <div>
+                <strong>Athlete</strong>
+                <p class="muted">Personal workspace</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow" id="today">YOUR TRAINING SPACE</p>
+                <h1>Let's get stronger<span class="brand-dot">.</span></h1>
+                <p class="muted">Small improvements. Consistent progress.</p>
+            </div>
+            <div class="status-pill"><span></span> YOUR FITNESS JOURNEY</div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <span class="tag">YOUR NEXT LEVEL STARTS HERE</span>
+                <h2>Show up.<br>Put in the work.</h2>
+                <p>Every rep counts. Keep track of your training and build a stronger version of yourself.</p>
+                <a class="primary-button" href="#workouts">Explore workouts <span>↗</span></a>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="hero-letter">G</div>
+                <div class="hero-caption">DISCIPLINE<br>OVER MOTIVATION</div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="overview-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR ACTIVITY</p>
+                    <h2 id="overview-title">Training overview</h2>
+                </div>
+                <span class="muted">Your journey starts here</span>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <span class="stat-icon">◷</span>
+                    <p class="muted">Workouts completed</p>
+                    <div class="stat-value">0 <span>sessions</span></div>
+                    <p class="stat-foot">Your first session awaits</p>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-icon">↗</span>
+                    <p class="muted">Training volume</p>
+                    <div class="stat-value">0 <span>kg</span></div>
+                    <p class="stat-foot">Weight × reps × sets</p>
+                </article>
+                <article class="stat-card accent-card">
+                    <span class="stat-icon">✳</span>
+                    <p class="muted">Weekly consistency</p>
+                    <div class="stat-value">0 <span>days</span></div>
+                    <p class="stat-foot">One session at a time</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="workouts">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PLAN YOUR SESSION</p>
+                    <h2>Workout categories</h2>
+                </div>
+            </div>
+
+            <div class="workout-grid">
+                <article class="workout-card">
+                    <div class="workout-symbol">01</div>
+                    <span class="category">UPPER BODY</span>
+                    <h3>Push Day</h3>
+                    <p>Chest, shoulders and triceps.</p>
+                    <span class="card-arrow">↗</span>
+                </article>
+                <article class="workout-card">
+                    <div class="workout-symbol">02</div>
+                    <span class="category">UPPER BODY</span>
+                    <h3>Pull Day</h3>
+                    <p>Back and biceps.</p>
+                    <span class="card-arrow">↗</span>
+                </article>
+                <article class="workout-card">
+                    <div class="workout-symbol">03</div>
+                    <span class="category">LOWER BODY</span>
+                    <h3>Leg Day</h3>
+                    <p>Quads, hamstrings and glutes.</p>
+                    <span class="card-arrow">↗</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="section progress-panel" id="progress">
+            <div>
+                <p class="eyebrow">THE LONG GAME</p>
+                <h2>Progress takes consistency.</h2>
+                <p class="muted">Log your first workout to start building your training history.</p>
+            </div>
+            <div class="progress-mark">01 <span>/ YOUR JOURNEY</span></div>
+        </section>
+
+        <footer>GYMLOG <span>·</span> BUILT FOR PROGRESS</footer>
+    </main>
+</body>
+
+</html>
